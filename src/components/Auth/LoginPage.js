@@ -5,13 +5,19 @@ import "./style.css";
 export const LoginPage = () => {
   const [credential, setCredential] = useState({ login: "", password: "" });
 
-  const handleClick = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setCredential({ login: "", password: "" });
   };
 
   const onChange = (event) => {
-    setCredential({ ...credential, [event.target.name]: [event.target.value] });
+    const { name, value } = event.target;
+    setCredential((prevCred) => {
+      return {
+        ...prevCred,
+        [name]: value,
+      };
+    });
   };
 
   return (
@@ -49,7 +55,7 @@ export const LoginPage = () => {
               type="submit"
               name="commit"
               value="Login"
-              onClick={handleClick}
+              onSubmit={handleSubmit}
             />
           </p>
         </form>
