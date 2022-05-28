@@ -3,9 +3,9 @@ import { ForgotPassword } from "./components/Auth/ForgotPassword";
 import { LoginPage } from "./components/Auth/LoginPage";
 import { SignupPage } from "./components/Auth/Signup";
 import { Home } from "./components/Home/Home";
-import { MentorDashboard } from "./components/Mentor/MentorDashboard";
+import MentorDashboard from "./components/Mentor/MentorDashboard";
 import { Register } from "./components/Register/Register.js";
-
+import MenteeDashboard from "./components/Mentee/MenteeDashboard";
 
 function App() {
   return (
@@ -20,8 +20,13 @@ function App() {
             <Route exact path="/register" element={<Register />} />
             <Route
               exact
-              path="/mentorDashboard"
+              path="/mentordashboard"
               element={<MentorDashboard />}
+            />
+            <Route
+              exact
+              path="/menteedashboard"
+              element={<MenteeDashboard />}
             />
           </Routes>
         </div>

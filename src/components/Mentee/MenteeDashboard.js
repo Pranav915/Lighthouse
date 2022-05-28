@@ -24,9 +24,9 @@ import { BiCog } from "react-icons/bi";
 
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
-import "./MentorDashboard.css";
+import "./MenteeDashboard.css";
 
-const MentorDashboard = () => {
+const MenteeDashboard = () => {
   //create initial menuCollapse state using useState hook
   const [menuCollapse, setMenuCollapse] = useState(false);
 
@@ -57,7 +57,8 @@ const MentorDashboard = () => {
                 Home
               </MenuItem>
               <MenuItem icon={<FaList />}>Messages</MenuItem>
-              <MenuItem icon={<FaRegHeart />}>Profile</MenuItem>
+              <MenuItem icon={<FaRegHeart />}>Browse</MenuItem>
+              <MenuItem icon={<RiPencilLine />}>Profile</MenuItem>
               <MenuItem icon={<BiCog />}>Settings</MenuItem>
             </Menu>
           </SidebarContent>
@@ -72,4 +73,4 @@ const MentorDashboard = () => {
   );
 };
 
-export default MentorDashboard;
+export default MenteeDashboard;
