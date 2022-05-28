@@ -6,6 +6,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* background-color: #E4E9F7; */  
+  /* <p style={{'fontSize':'11px','margin':'18px 10px -4px 10px','display':'flex','textAlign':'right','alignItems':'right','justifyContent':'right','alignContent':'right'}}>Time Stamp</p> */
   font-family: "Poppins" , sans-serif;
 }
 .sidebar{
@@ -15,7 +17,7 @@
   height: 100%;
   width: 78px;
   background: #043281;
-  padding: 6px 14px;
+  padding: 6px 0px;
   z-index: 99;
   transition: all 0.5s ease;
 }
@@ -72,7 +74,7 @@
 }
 .sidebar li{
   position: relative;
-  margin: 8px 0;
+  margin: 8px 0px;
   list-style: none;
 }
 .sidebar li .tooltip{
