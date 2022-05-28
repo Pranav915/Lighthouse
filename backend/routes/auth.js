@@ -3,6 +3,7 @@ const User = require("../models/User");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 let saltRounds = 10;
 var fetchuser = require("../middleware/fetchuser");
 const { authToken, genToken } = require("../middleware/authorization_jwt");
@@ -10,7 +11,6 @@ const { authToken, genToken } = require("../middleware/authorization_jwt");
 router.post(
   "/createuser",
   [
-    body("name", "Enter a valid name").isLength({ min: 3 }),
     body("email", "Enter a valid email").isEmail(),
     body("password", "Password must be atleast 5 characters").isLength({
       min: 6,
@@ -35,9 +35,9 @@ router.post(
 
       // Create a new user
       user = await User.create({
-        name: req.body.name,
         email: req.body.email,
         password: securedPassword,
+        role: req.body.role,
       });
 
       const data = {
@@ -46,10 +46,11 @@ router.post(
         },
       };
 
-      const auth_token = authToken;
+      const auth_token = jwt.sign(data, "abcd");
       console.log(auth_token);
 
-      res.json({ authToken });
+      const role = user.role;
+      res.json({ auth_token, role });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Some error occurred");
@@ -93,10 +94,11 @@ router.post(
         },
       };
 
-      const gen_Token = genToken;
-      console.log(gen_Token);
+      const role = user.role;
+      const authToken = jwt.sign(payload, "abcd");
+      console.log(authToken);
 
-      res.json({ authToken });
+      res.json({ authToken, role });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server Error");

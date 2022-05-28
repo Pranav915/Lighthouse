@@ -33,7 +33,7 @@ export const LoginPage = () => {
       <div class="container">
         <div class="forms-container">
           <div class="signin-signup">
-            <form action="#" class="sign-in-form">
+            <form class="sign-in-form" onSubmit={handleSignIn}>
               <h2 class="title">Sign in</h2>
               <div class="input-field">
                 <i class="fas fa-user"></i>
@@ -58,7 +58,7 @@ export const LoginPage = () => {
               <input type="submit" value="Login" class="btn solid" />
               <a href="/forgotPassword">Forgot Password?</a>
             </form>
-            <form action="#" class="sign-up-form">
+            <form class="sign-up-form">
               <h2 class="title">Sign up</h2>
               <div class="input-field">
                 <i class="fas fa-user"></i>
@@ -98,11 +98,7 @@ export const LoginPage = () => {
             <div class="content">
               <h3>Already have an Account ?</h3>
               <p></p>
-              <button
-                class="btn transparent"
-                id="sign-in-btn"
-                onClick={handleSignIn}
-              >
+              <button class="btn transparent" id="sign-in-btn">
                 Sign in
               </button>
             </div>

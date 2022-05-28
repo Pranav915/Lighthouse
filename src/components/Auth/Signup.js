@@ -18,7 +18,7 @@ export const SignupPage = () => {
 
   const handleSignUp = async (event) => {
     event.preventDefault();
-    const response = await fetch("", {
+    const response = await fetch("http://localhost:5000/api/auth/createuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const SignupPage = () => {
               <a href="../Forget_Pass/Forget_Password.html">Forgot Password?</a>
             </form>
             {/* Sign Up Form */}
-            <form action="#" class="sign-up-form">
+            <form class="sign-up-form">
               <h2 class="title">Sign up</h2>
               <div class="input-field">
                 <i class="fas fa-envelope"></i>
