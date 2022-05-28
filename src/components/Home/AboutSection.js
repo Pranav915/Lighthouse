@@ -7,13 +7,13 @@ export const AboutSection = () => {
     <>
         <section class="about" id="about">
         <div class="max-width">
-            <h2 class="title">About MedFolio</h2>
+            <h2 class="title">About LightHouse</h2>
             <div class="about-content">
                 <div class="column left">
                     <img src={about} alt=""/>
                 </div>
                 <div class="column right">
-                    <div class="text"><span>HealthCare System Reimagined...</span></div>
+                    <div class="text"><span>MentorShip Like never Before</span></div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut voluptatum eveniet doloremque
                         autem excepturi eaque, sit laboriosam voluptatem nisi delectus. Facere explicabo hic minus
                         accusamus alias fuga nihil dolorum quae. Explicabo illo unde, odio consequatur ipsam possimus

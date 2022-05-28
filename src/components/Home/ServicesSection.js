@@ -10,7 +10,7 @@ export const ServicesSection = () => {
                 <div class="card">
                     <div class="box">
                         <i class="fas fa-paint-brush"></i>
-                        <div class="text">Doctor</div>
+                        <div class="text">Be a Mentor</div>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.
                         </p>
                     </div>
@@ -18,7 +18,7 @@ export const ServicesSection = () => {
                 <div class="card">
                     <div class="box">
                         <i class="fas fa-chart-line"></i>
-                        <div class="text">Patient</div>
+                        <div class="text">Get Mentorship</div>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem quia sunt, quasi quo illo enim.
                         </p>
                     </div>
