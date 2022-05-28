@@ -1,11 +1,19 @@
 import React from "react";
 import { useState } from "react";
-import "./style.css";
+import "./LoginPage.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const navigateToSignup = () => {
+    // 👇️ navigate to /signup
+    navigate("/signup");
+  };
+
   const [credential, setCredential] = useState({ login: "", password: "" });
 
-  const handleSubmit = (event) => {
+  const handleSignIn = (event) => {
     event.preventDefault();
     setCredential({ login: "", password: "" });
   };
@@ -22,7 +30,84 @@ export const LoginPage = () => {
 
   return (
     <>
-      <div className="login">
+      <div className="container">
+        <div className="forms-container">
+          <div className="signin-signup">
+            <form className="sign-in-form" onSubmit={handleSignIn}>
+              <h2 className="title">Sign in</h2>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
+                <input
+                  type="text"
+                  placeholder="Username"
+                  name="login"
+                  value={credential.login}
+                  onChange={onChange}
+                />
+              </div>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={credential.password}
+                  onChange={onChange}
+                />
+              </div>
+              <input type="submit" value="Login" className="btn solid" />
+              <a href="/forgotPassword">Forgot Password?</a>
+            </form>
+            <form className="sign-up-form">
+              <h2 className="title">Sign up</h2>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
+                <input type="text" placeholder="Username" />
+              </div>
+              <div className="input-field">
+                <i className="fas fa-envelope"></i>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <input type="password" placeholder="Password" />
+              </div>
+              <input className="btn" value="Sign up" on />
+            </form>
+          </div>
+        </div>
+        <div className="panels-container">
+          <div className="panel left-panel">
+            <div className="content">
+              <h3>New here ?</h3>
+              <p>
+                Make your account and get all your medical reports on Med
+                Portfolio
+              </p>
+              <button
+                className="btn transparent"
+                id="sign-up-btn"
+                onClick={navigateToSignup}
+              >
+                Sign up
+              </button>
+            </div>
+            <img src="img/signin.png" className="image" alt="" />
+          </div>
+          <div className="panel right-panel">
+            <div className="content">
+              <h3>Already have an Account ?</h3>
+              <p></p>
+              <button className="btn transparent" id="sign-in-btn">
+                Sign in
+              </button>
+            </div>
+            <img src="img/signup.png" className="image" alt="" />
+          </div>
+        </div>
+      </div>
+
+      {/* <div classNameName="login">
         <h2>Sign Up</h2>
         <h2 style={{ "border-bottom": "2px solid #1161ed" }}>Login</h2>
         <form method="post" action="">
@@ -44,13 +129,13 @@ export const LoginPage = () => {
               onChange={onChange}
             />
           </p>
-          {/* <p className="remember_me">
+          <p classNameName="remember_me">
             <label>
               <input type="checkbox" name="remember_me" id="remember_me" />
               Remember me on this computer
             </label>
-          </p> */}
-          <p className="submit">
+          </p>
+          <p classNameName="submit">
             <input
               type="submit"
               name="commit"
@@ -61,12 +146,13 @@ export const LoginPage = () => {
         </form>
       </div>
 
-      <div className="login-help">
+      <div classNameName="login-help">
         <p>
           Forgot your password?{" "}
           <a href="/forgotpassword">Click here to reset it</a>.
         </p>
       </div>
+      <script src="./Log_In.js"></script> */}
     </>
   );
 };
