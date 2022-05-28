@@ -30,8 +30,18 @@ export const SignupPage = () => {
       }),
     });
     setCredential({ email: "", password: "", role: "" });
-    const json = await response.json();
-    console.log(json);
+    const res = await response.json();
+    if (res.success) {
+      localStorage.setItem("token", res.authToken);
+      if (res.role === "Mentor") {
+        navigate("/mentorDashboard");
+      } else if (res.role === "Mentee") {
+        navigate("/menteeDashboard");
+      }
+    } else {
+      alert(res.error);
+    }
+    console.log(res);
   };
 
   const onChange = (event) => {

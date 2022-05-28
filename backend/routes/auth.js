@@ -15,12 +15,18 @@ router.post(
     body("password", "Password must be atleast 5 characters").isLength({
       min: 6,
     }),
+    body("role", "Please select your role").isLength({
+      min: 1,
+    }),
   ],
   async (req, res) => {
     // If there are errors return bad requests and the errors.
     const errors = validationResult(req);
+    var success = true;
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      success = false;
+      var error = "Enter a valid email, Password must be atleast 5 characters";
+      return res.status(400).json({ success, errors: errors.array(), error });
     }
     // Check whether the email exists already'
     try {
@@ -51,10 +57,11 @@ router.post(
       console.log(auth_token);
 
       const role = user.role;
-      res.json({ auth_token, role });
+      res.json({ success, auth_token, role });
     } catch (error) {
+      success = false;
       console.error(error.message);
-      res.status(500).send("Some error occurred");
+      res.status(500).send(success, "Some error occurred");
     }
   }
 );
@@ -69,24 +76,30 @@ router.post(
   async (req, res) => {
     // If there are errors return bad requests and the errors.
     const errors = validationResult(req);
+    var success = true;
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      success = false;
+      return res.status(400).json({ success, errors: errors.array() });
     }
 
     const { email, password } = req.body;
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        return res
-          .status(400)
-          .json({ error: "Please try to login with correct credentials" });
+        success = false;
+        return res.status(400).json({
+          success,
+          error: "Please try to login with correct credentials",
+        });
       }
 
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
-        return res
-          .status(400)
-          .json({ error: "Please try to login with correct credentials" });
+        success = false;
+        return res.status(400).json({
+          success,
+          error: "Please try to login with correct credentials",
+        });
       }
 
       const payload = {
@@ -97,12 +110,13 @@ router.post(
 
       const role = user.role;
       const authToken = jwt.sign(payload, "abcd");
-      console.log(authToken);
+      console.log(success, authToken);
 
-      res.json({ authToken, role });
+      res.json({ success, authToken, role });
     } catch (error) {
+      success = false;
       console.error(error.message);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send(success, "Internal Server Error");
     }
   }
 );

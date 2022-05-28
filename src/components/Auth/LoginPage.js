@@ -11,11 +11,33 @@ export const LoginPage = () => {
     navigate("/signup");
   };
 
-  const [credential, setCredential] = useState({ login: "", password: "" });
+  const [credential, setCredential] = useState({ email: "", password: "" });
 
-  const handleSignIn = (event) => {
+  const handleSignIn = async (event) => {
     event.preventDefault();
-    setCredential({ login: "", password: "" });
+    const response = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: credential.email,
+        password: credential.password,
+      }),
+    });
+    setCredential({ email: "", password: "" });
+    const res = await response.json();
+    if (res.success) {
+      localStorage.setItem("token", res.authToken);
+      if (res.role === "Mentor") {
+        navigate("/mentorDashboard");
+      } else if (res.role === "Mentee") {
+        navigate("/menteeDashboard");
+      }
+    } else {
+      alert(res.error);
+    }
+    console.log(res);
   };
 
   const onChange = (event) => {
@@ -40,8 +62,8 @@ export const LoginPage = () => {
                 <input
                   type="text"
                   placeholder="Username"
-                  name="login"
-                  value={credential.login}
+                  name="email"
+                  value={credential.email}
                   onChange={onChange}
                 />
               </div>
