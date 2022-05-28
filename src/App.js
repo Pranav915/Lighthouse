@@ -4,6 +4,8 @@ import { LoginPage } from "./components/Auth/LoginPage";
 import { SignupPage } from "./components/Auth/Signup";
 import { Home } from "./components/Home/Home";
 import { MentorDashboard } from "./components/Mentor/MentorDashboard";
+import { Register } from "./components/Register/Register.js";
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
             <Route exact path="/login" element={<LoginPage />} />
             <Route exact path="/signup" element={<SignupPage />} />
             <Route exact path="/forgotpassword" element={<ForgotPassword />} />
+            <Route exact path="/register" element={<Register />} />
             <Route
               exact
               path="/mentorDashboard"

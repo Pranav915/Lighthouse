@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./LoginPage.css";
+import "./LoginPage.scss";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 export const SignupPage = () => {
@@ -56,6 +56,7 @@ export const SignupPage = () => {
 
   return (
     <>
+    <div className="LoginPage">
       <div className="container sign-up-mode">
         <div className="forms-container">
           <div className="signin-signup">
@@ -148,6 +149,7 @@ export const SignupPage = () => {
             <img src="img/signup.png" className="image" alt="" />
           </div>
         </div>
+      </div>
       </div>
     </>
   );
