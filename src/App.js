@@ -6,6 +6,7 @@ import { Home } from "./components/Home/Home";
 import MentorDashboard from "./components/Mentor/MentorDashboard";
 import { Register } from "./components/Register/Register.js";
 import MenteeDashboard from "./components/Mentee/MenteeDashboard";
+import {Browse} from "./components/Mentee/Browse";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/signup" element={<SignupPage />} />
             <Route exact path="/forgotpassword" element={<ForgotPassword />} />
             <Route exact path="/register" element={<Register />} />
+            <Route exact path="/browse" element={<Browse />} />
             <Route
               exact
               path="/mentordashboard"
