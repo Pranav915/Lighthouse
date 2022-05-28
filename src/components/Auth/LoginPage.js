@@ -30,13 +30,13 @@ export const LoginPage = () => {
 
   return (
     <>
-      <div class="container">
-        <div class="forms-container">
-          <div class="signin-signup">
-            <form class="sign-in-form" onSubmit={handleSignIn}>
-              <h2 class="title">Sign in</h2>
-              <div class="input-field">
-                <i class="fas fa-user"></i>
+      <div className="container">
+        <div className="forms-container">
+          <div className="signin-signup">
+            <form className="sign-in-form" onSubmit={handleSignIn}>
+              <h2 className="title">Sign in</h2>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
                 <input
                   type="text"
                   placeholder="Username"
@@ -45,8 +45,8 @@ export const LoginPage = () => {
                   onChange={onChange}
                 />
               </div>
-              <div class="input-field">
-                <i class="fas fa-lock"></i>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
                 <input
                   type="password"
                   placeholder="Password"
@@ -55,59 +55,59 @@ export const LoginPage = () => {
                   onChange={onChange}
                 />
               </div>
-              <input type="submit" value="Login" class="btn solid" />
+              <input type="submit" value="Login" className="btn solid" />
               <a href="/forgotPassword">Forgot Password?</a>
             </form>
-            <form class="sign-up-form">
-              <h2 class="title">Sign up</h2>
-              <div class="input-field">
-                <i class="fas fa-user"></i>
+            <form className="sign-up-form">
+              <h2 className="title">Sign up</h2>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
                 <input type="text" placeholder="Username" />
               </div>
-              <div class="input-field">
-                <i class="fas fa-envelope"></i>
+              <div className="input-field">
+                <i className="fas fa-envelope"></i>
                 <input type="email" placeholder="Email" />
               </div>
-              <div class="input-field">
-                <i class="fas fa-lock"></i>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
                 <input type="password" placeholder="Password" />
               </div>
-              <input type="submit" class="btn" value="Sign up" on />
+              <input className="btn" value="Sign up" on />
             </form>
           </div>
         </div>
-        <div class="panels-container">
-          <div class="panel left-panel">
-            <div class="content">
+        <div className="panels-container">
+          <div className="panel left-panel">
+            <div className="content">
               <h3>New here ?</h3>
               <p>
                 Make your account and get all your medical reports on Med
                 Portfolio
               </p>
               <button
-                class="btn transparent"
+                className="btn transparent"
                 id="sign-up-btn"
                 onClick={navigateToSignup}
               >
                 Sign up
               </button>
             </div>
-            <img src="img/signin.png" class="image" alt="" />
+            <img src="img/signin.png" className="image" alt="" />
           </div>
-          <div class="panel right-panel">
-            <div class="content">
+          <div className="panel right-panel">
+            <div className="content">
               <h3>Already have an Account ?</h3>
               <p></p>
-              <button class="btn transparent" id="sign-in-btn">
+              <button className="btn transparent" id="sign-in-btn">
                 Sign in
               </button>
             </div>
-            <img src="img/signup.png" class="image" alt="" />
+            <img src="img/signup.png" className="image" alt="" />
           </div>
         </div>
       </div>
 
-      {/* <div className="login">
+      {/* <div classNameName="login">
         <h2>Sign Up</h2>
         <h2 style={{ "border-bottom": "2px solid #1161ed" }}>Login</h2>
         <form method="post" action="">
@@ -129,13 +129,13 @@ export const LoginPage = () => {
               onChange={onChange}
             />
           </p>
-          <p className="remember_me">
+          <p classNameName="remember_me">
             <label>
               <input type="checkbox" name="remember_me" id="remember_me" />
               Remember me on this computer
             </label>
           </p>
-          <p className="submit">
+          <p classNameName="submit">
             <input
               type="submit"
               name="commit"
@@ -146,7 +146,7 @@ export const LoginPage = () => {
         </form>
       </div>
 
-      <div className="login-help">
+      <div classNameName="login-help">
         <p>
           Forgot your password?{" "}
           <a href="/forgotpassword">Click here to reset it</a>.

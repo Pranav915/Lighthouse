@@ -23,8 +23,8 @@ export const SignupPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    });
-    setCredential({ login: "", password: "" });
+      body: JSON.stringify({"title":title[0] , "description":description[0] , "tag":tag[0]}),
+    setCredential({ login: "", password: "", role: "" });
     const json = await response.json();
     console.log(json);
   };
@@ -41,78 +41,95 @@ export const SignupPage = () => {
 
   return (
     <>
-      <div class="container sign-up-mode">
-        <div class="forms-container">
-          <div class="signin-signup">
-            <form action="#" class="sign-in-form">
-              <h2 class="title">Sign in</h2>
-              <div class="input-field">
-                <i class="fas fa-user"></i>
+      <div className="container sign-up-mode">
+        <div className="forms-container">
+          <div className="signin-signup">
+            <form action="#" className="sign-in-form">
+              <h2 className="title">Sign in</h2>
+              <div className="input-field">
+                <i className="fas fa-user"></i>
                 <input type="email" placeholder="Email" />
               </div>
-              <div class="input-field">
-                <i class="fas fa-lock"></i>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
                 <input type="password" placeholder="Password" />
               </div>
-              <input type="submit" value="Login" class="btn solid" />
+              <input type="submit" value="Login" className="btn solid" />
               <a href="../Forget_Pass/Forget_Password.html">Forgot Password?</a>
             </form>
             {/* Sign Up Form */}
-            <form class="sign-up-form">
-              <h2 class="title">Sign up</h2>
-              <div class="input-field">
-                <i class="fas fa-envelope"></i>
+            <form className="sign-up-form">
+              <h2 className="title">Sign up</h2>
+              <div className="input-field">
+                <i className="fas fa-envelope"></i>
                 <input
                   type="email"
                   placeholder="Email"
+                  name="email"
                   onChange={onChange}
                   value={credential.email}
                 />
               </div>
-              <div class="input-field">
-                <i class="fas fa-lock"></i>
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
                 <input
                   type="password"
                   placeholder="Password"
+                  name="password"
                   onChange={onChange}
                   value={credential.password}
                 />
               </div>
-              <input type="submit" class="btn" value="Sign up" />
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <select
+                  name="role"
+                  id="role"
+                  value={credential.role}
+                  onChange={onChange}
+                >
+                  <option value="" disabled>
+                    Role
+                  </option>
+                  <option value="Mentee">Mentee</option>
+                  <option value="Mentor">Mentor</option>
+                </select>
+              </div>
+              <input type="submit" className="btn" value="Sign up" />
             </form>
           </div>
         </div>
-        <div class="panels-container">
-          <div class="panel left-panel">
-            <div class="content">
+        <div className="panels-container">
+          <div className="panel left-panel">
+            <div className="content">
               <h3>New here ?</h3>
               <p>
                 Make your account and get all your medical reports on Med
                 Portfolio
               </p>
               <button
-                class="btn transparent"
+                className="btn transparent"
                 id="sign-up-btn"
                 onClick={handleSignUp}
               >
                 Sign up
               </button>
             </div>
-            <img src="img/signin.png" class="image" alt="" />
+            <img src="img/signin.png" className="image" alt="" />
           </div>
-          <div class="panel right-panel">
-            <div class="content">
+          <div className="panel right-panel">
+            <div className="content">
               <h3>Already have an Account ?</h3>
               <p></p>
               <button
-                class="btn transparent"
+                className="btn transparent"
                 id="sign-in-btn"
                 onClick={navigateToLogin}
               >
                 Sign in
               </button>
             </div>
-            <img src="img/signup.png" class="image" alt="" />
+            <img src="img/signup.png" className="image" alt="" />
           </div>
         </div>
       </div>
