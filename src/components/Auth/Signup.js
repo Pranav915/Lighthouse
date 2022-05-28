@@ -23,8 +23,13 @@ export const SignupPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({"title":title[0] , "description":description[0] , "tag":tag[0]}),
-    setCredential({ login: "", password: "", role: "" });
+      body: JSON.stringify({
+        email: credential.email,
+        password: credential.password,
+        role: credential.role,
+      }),
+    });
+    setCredential({ email: "", password: "", role: "" });
     const json = await response.json();
     console.log(json);
   };
@@ -95,7 +100,12 @@ export const SignupPage = () => {
                   <option value="Mentor">Mentor</option>
                 </select>
               </div>
-              <input type="submit" className="btn" value="Sign up" />
+              <input
+                type="submit"
+                className="btn"
+                value="Sign up"
+                onClick={handleSignUp}
+              />
             </form>
           </div>
         </div>
@@ -107,11 +117,7 @@ export const SignupPage = () => {
                 Make your account and get all your medical reports on Med
                 Portfolio
               </p>
-              <button
-                className="btn transparent"
-                id="sign-up-btn"
-                onClick={handleSignUp}
-              >
+              <button className="btn transparent" id="sign-up-btn">
                 Sign up
               </button>
             </div>

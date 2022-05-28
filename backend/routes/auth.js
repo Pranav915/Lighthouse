@@ -39,6 +39,7 @@ router.post(
         password: securedPassword,
         role: req.body.role,
       });
+      user.save();
 
       const data = {
         user: {
