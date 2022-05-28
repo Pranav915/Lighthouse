@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./LoginPage.css";
+import "./LoginPage.scss";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
@@ -52,6 +52,7 @@ export const LoginPage = () => {
 
   return (
     <>
+    <div className="LoginPage">
       <div className="container">
         <div className="forms-container">
           <div className="signin-signup">
@@ -175,6 +176,7 @@ export const LoginPage = () => {
         </p>
       </div>
       <script src="./Log_In.js"></script> */}
+      </div>
     </>
   );
 };
