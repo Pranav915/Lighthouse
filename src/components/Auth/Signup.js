@@ -1,18 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginPage.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 export const SignupPage = () => {
-  const sign_in_btn = document.querySelector("#sign-in-btn");
-  const sign_up_btn = document.querySelector("#sign-up-btn");
-  const container = document.querySelector(".container");
+  const navigate = useNavigate();
 
-  sign_up_btn.addEventListener("click", () => {
-    container.classList.add("sign-up-mode");
+  const navigateToLogin = () => {
+    // 👇️ navigate to /signup
+    navigate("/login");
+  };
+
+  const [credential, setCredential] = useState({
+    email: "",
+    password: "",
+    role: "",
   });
 
-  sign_in_btn.addEventListener("click", () => {
-    container.classList.remove("sign-up-mode");
-  });
+  const handleSignUp = async (event) => {
+    event.preventDefault();
+    const response = await fetch("", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    setCredential({ login: "", password: "" });
+    const json = await response.json();
+    console.log(json);
+  };
+
+  const onChange = (event) => {
+    const { name, value } = event.target;
+    setCredential((prevCred) => {
+      return {
+        ...prevCred,
+        [name]: value,
+      };
+    });
+  };
 
   return (
     <>
@@ -23,7 +48,7 @@ export const SignupPage = () => {
               <h2 class="title">Sign in</h2>
               <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Username" />
+                <input type="email" placeholder="Email" />
               </div>
               <div class="input-field">
                 <i class="fas fa-lock"></i>
@@ -32,19 +57,26 @@ export const SignupPage = () => {
               <input type="submit" value="Login" class="btn solid" />
               <a href="../Forget_Pass/Forget_Password.html">Forgot Password?</a>
             </form>
+            {/* Sign Up Form */}
             <form action="#" class="sign-up-form">
               <h2 class="title">Sign up</h2>
               <div class="input-field">
-                <i class="fas fa-user"></i>
-                <input type="text" placeholder="Username" />
-              </div>
-              <div class="input-field">
                 <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="Email" />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  onChange={onChange}
+                  value={credential.email}
+                />
               </div>
               <div class="input-field">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={onChange}
+                  value={credential.password}
+                />
               </div>
               <input type="submit" class="btn" value="Sign up" />
             </form>
@@ -58,7 +90,11 @@ export const SignupPage = () => {
                 Make your account and get all your medical reports on Med
                 Portfolio
               </p>
-              <button class="btn transparent" id="sign-up-btn">
+              <button
+                class="btn transparent"
+                id="sign-up-btn"
+                onClick={handleSignUp}
+              >
                 Sign up
               </button>
             </div>
@@ -68,7 +104,11 @@ export const SignupPage = () => {
             <div class="content">
               <h3>Already have an Account ?</h3>
               <p></p>
-              <button class="btn transparent" id="sign-in-btn">
+              <button
+                class="btn transparent"
+                id="sign-in-btn"
+                onClick={navigateToLogin}
+              >
                 Sign in
               </button>
             </div>
@@ -76,45 +116,6 @@ export const SignupPage = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="login">
-        <h2 style={{ "border-bottom": "2px solid #1161ed;" }}>Sign Up</h2>
-        <h2>Login</h2>
-        <form method="post" action="">
-          <p>
-            <input type="text" name="login" value="" placeholder="Username" />
-          </p>
-          <p>
-            <input type="email" name="login" value="" placeholder="Email" />
-          </p>
-          <p>
-            <input
-              type="password"
-              name="password"
-              value=""
-              placeholder="Password"
-            />
-          </p>
-          <p>
-            <input
-              type="password"
-              name="password"
-              value=""
-              placeholder="Confirm Password"
-            />
-          </p>
-          <p>
-            <input type="radio" id="html" name="fav_language" value="Mentee" />
-            <label htmlFor="html">Register as Mentee</label>
-            <input type="radio" id="css" name="fav_language" value="Mentor" />
-            <label htmlFor="css">Register as Mentor</label>
-          </p>
-
-          <p className="submit">
-            <input type="submit" name="commit" value="Sign Up" />
-          </p>
-        </form>
-      </div> */}
     </>
   );
 };

@@ -1,11 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import "./LoginPage.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const navigateToSignup = () => {
+    // 👇️ navigate to /signup
+    navigate("/signup");
+  };
+
   const [credential, setCredential] = useState({ login: "", password: "" });
 
-  const handleSubmit = (event) => {
+  const handleSignIn = (event) => {
     event.preventDefault();
     setCredential({ login: "", password: "" });
   };
@@ -20,18 +28,6 @@ export const LoginPage = () => {
     });
   };
 
-  const sign_in_btn = document.querySelector("#sign-in-btn");
-  const sign_up_btn = document.querySelector("#sign-up-btn");
-  const container = document.querySelector(".container");
-
-  sign_up_btn.addEventListener("click", () => {
-    container.classList.add("sign-up-mode");
-  });
-
-  sign_in_btn.addEventListener("click", () => {
-    container.classList.remove("sign-up-mode");
-  });
-
   return (
     <>
       <div class="container">
@@ -41,14 +37,26 @@ export const LoginPage = () => {
               <h2 class="title">Sign in</h2>
               <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Username" />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  name="login"
+                  value={credential.login}
+                  onChange={onChange}
+                />
               </div>
               <div class="input-field">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={credential.password}
+                  onChange={onChange}
+                />
               </div>
               <input type="submit" value="Login" class="btn solid" />
-              <a href="../Forget_Pass/Forget_Password.html">Forgot Password?</a>
+              <a href="/forgotPassword">Forgot Password?</a>
             </form>
             <form action="#" class="sign-up-form">
               <h2 class="title">Sign up</h2>
@@ -64,7 +72,7 @@ export const LoginPage = () => {
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Password" />
               </div>
-              <input type="submit" class="btn" value="Sign up" />
+              <input type="submit" class="btn" value="Sign up" on />
             </form>
           </div>
         </div>
@@ -76,7 +84,11 @@ export const LoginPage = () => {
                 Make your account and get all your medical reports on Med
                 Portfolio
               </p>
-              <button class="btn transparent" id="sign-up-btn">
+              <button
+                class="btn transparent"
+                id="sign-up-btn"
+                onClick={navigateToSignup}
+              >
                 Sign up
               </button>
             </div>
@@ -86,7 +98,11 @@ export const LoginPage = () => {
             <div class="content">
               <h3>Already have an Account ?</h3>
               <p></p>
-              <button class="btn transparent" id="sign-in-btn">
+              <button
+                class="btn transparent"
+                id="sign-in-btn"
+                onClick={handleSignIn}
+              >
                 Sign in
               </button>
             </div>
