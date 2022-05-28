@@ -15,7 +15,7 @@ export const ContactSection = () => {
                         <div class="row">
                             <i class="fas fa-user"></i>
                             <div class="info">
-                                <div class="head">MedFolio</div>
+                                <div class="head">LightHouse</div>
                                 <div class="sub-title">India</div>
                             </div>
                         </div>
