@@ -23,6 +23,10 @@ const mentorsSchema = new Schema(
       required: true,
       unique: true,
     },
+    qualification: {
+      type: String,
+      required: true
+    },
     category: {
         type: String
     },
