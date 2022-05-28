@@ -6,7 +6,13 @@ router.post("/search", async (req, res) => {
     try{
         const query = req.body.query;
         let found = await mentors.find({ qualification : query});
-        res.status(200).json({ finds: found});
+        const f = found.map((user) => {
+            return({
+                name: user.name,
+                qualification: user.qualification
+            })
+        });
+        res.status(200).json({ finds: f});
     }
     catch(err){
         console.log(err)
