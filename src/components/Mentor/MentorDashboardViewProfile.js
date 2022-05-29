@@ -29,6 +29,7 @@ export const MentorDashboardViewProfile = () => {
   const [call3, setCall3] = useState(false);
 
 
+
   const onsele1 = async (event) => {
     const response = await fetch("http://localhost:5000/api/viewprofile", {
         method: "POST",
@@ -111,6 +112,7 @@ export const MentorDashboardViewProfile = () => {
       console.log(name);
       console.log(name);
       // console.log(response.mentor);
+
     // const response = await fetch("http://localhost:5000/api/mentorDashboardviewProfile", {
     //   method: "POST",
     //   headers: {

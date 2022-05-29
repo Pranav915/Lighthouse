@@ -51,6 +51,10 @@ const MenteeDashboard = () => {
     navigate("/mentorlist");
   };
 
+  const handleProfileClick = () => {
+    navigate("/menteeprofile");
+  };
+
   //create initial menuCollapse state using useState hook
   const [menuCollapse, setMenuCollapse] = useState(false);
 
@@ -88,7 +92,9 @@ const MenteeDashboard = () => {
                 </MenuItem>
                 <MenuItem icon={<FaList />}>Messages</MenuItem>
                 <MenuItem icon={<FaRegHeart />}>Browse</MenuItem>
-                <MenuItem icon={<RiPencilLine />}>Profile</MenuItem>
+                <MenuItem icon={<RiPencilLine />} onClick={handleProfileClick}>
+                  Profile
+                </MenuItem>
                 <MenuItem icon={<BiCog />}>Settings</MenuItem>
               </Menu>
             </SidebarContent>
