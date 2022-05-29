@@ -8,6 +8,7 @@ import Sidebar from "./components/Mentee/Sidebar";
 import { Browse } from "./components/Mentee/Browse";
 import { MentorRegister } from "./components/Mentor/MentorRegister";
 import { MenteeRegister } from "./components/Mentee/MenteeRegister";
+import { Mentorlist } from "./components/Mentee/Mentorlist";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             />
             <Route exact path="/mentorregister" element={<MentorRegister />} />
             <Route exact path="/menteeregister" element={<MenteeRegister />} />
+            <Route exact path="/mentorlist" element={<Mentorlist />} />
           </Routes>
         </div>
       </Router>
