@@ -8,6 +8,8 @@ import { Register } from "./components/Register/Register.js";
 import MenteeDashboard from "./components/Mentee/MenteeDashboard";
 import {Browse} from "./components/Mentee/Browse";
 import Sidebar from "./components/Mentee/Sidebar";
+import {MentorDashboardViewProfile} from "./components/Mentor/MentorDashboardViewProfile";
+import {MenteeDashboardViewProfile} from "./components/Mentee/ViewProfile";
 
 function App() {
   return (
@@ -29,8 +31,18 @@ function App() {
             />
             <Route
               exact
+              path="/mentordashboardviewProfile"
+              element={<MentorDashboardViewProfile />}
+            />
+            <Route
+              exact
               path="/menteedashboard"
               element={<MenteeDashboard />}
+            />
+            <Route
+              exact
+              path="/menteedashboardviewProfile"
+              element={<MenteeDashboardViewProfile />}
             />
           </Routes>
         </div>

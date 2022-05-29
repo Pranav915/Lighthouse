@@ -25,7 +25,7 @@ import { BiCog } from "react-icons/bi";
 
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
-import "./MenteeDashboard.css";
+import "./MenteeDashboard.scss";
 
 const MenteeDashboard = () => {
   
@@ -41,6 +41,7 @@ const MenteeDashboard = () => {
 
   return (
     <>
+      <div className="MenteeDashboard">
       <div id="header">
         {/* collapsed props to change menu size using menucollapse state */}
         
@@ -72,6 +73,7 @@ const MenteeDashboard = () => {
             </Menu>
           </SidebarFooter>
         </ProSidebar>
+      </div>
       </div>
     </>
   );

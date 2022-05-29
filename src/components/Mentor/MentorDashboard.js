@@ -24,7 +24,7 @@ import { BiCog } from "react-icons/bi";
 
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
-import "./MentorDashboard.css";
+import "./MentorDashboard.scss";
 
 const MentorDashboard = () => {
   //create initial menuCollapse state using useState hook
@@ -38,6 +38,7 @@ const MentorDashboard = () => {
 
   return (
     <>
+      <div className="MentorDashboard">
       <div id="header">
         {/* collapsed props to change menu size using menucollapse state */}
         <ProSidebar collapsed={menuCollapse}>
@@ -67,6 +68,7 @@ const MentorDashboard = () => {
             </Menu>
           </SidebarFooter>
         </ProSidebar>
+      </div>
       </div>
     </>
   );
