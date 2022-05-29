@@ -20,6 +20,7 @@ export const MenteeRegister = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({}),
       }
@@ -58,7 +59,7 @@ export const MenteeRegister = () => {
     <div className="Register">
       <body>
         <div className="container">
-          <div className="title">Register as a Mentor</div>
+          <div className="title">Register as a Mentee</div>
           <div className="content">
             <form>
               <div className="user-details">

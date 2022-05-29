@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 
 const menteeSchema = new Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
     name: {
       type: String,
       required: true,
@@ -26,16 +30,16 @@ const menteeSchema = new Schema(
     mentors: [
       {
         name: { type: String },
-        mentor_id: { 
+        mentor_id: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "mentors",
         },
         start: {
-          type: Date
+          type: Date,
         },
         end: {
-            type: Date
-        }
+          type: Date,
+        },
       },
     ],
   },
@@ -47,4 +51,3 @@ const menteeSchema = new Schema(
 const mentees = mongoose.model("mentees", menteeSchema);
 
 module.exports = mentees;
-

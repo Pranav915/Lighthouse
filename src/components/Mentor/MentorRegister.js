@@ -17,32 +17,34 @@ export const MentorRegister = () => {
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    const response = await fetch(
-      "http://localhost:5000/api/auth/mentorregister",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({}),
-      }
-    );
-    setProfile({});
+    const response = await fetch("http://localhost:5000/api/registermentor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        name: profile.name,
+        age: profile.age,
+        gender: profile.gender,
+        mobile: profile.mobile,
+        qualification: profile.qualification,
+        category: profile.category,
+        about: profile.about,
+      }),
+    });
+    setProfile({
+      name: "",
+      age: "",
+      gender: "",
+      mobile: "",
+      qualification: "",
+      category: "",
+      about: "",
+    });
     const res = await response.json();
     if (res.success) {
-      if (res.user.isDetail === true) {
-        if (res.user.role === "Mentor") {
-          navigate("/mentordashboard");
-        } else if (res.user.role === "Mentee") {
-          navigate("/menteedashboard");
-        } else {
-          alert(res.error);
-        }
-      } else if (res.user.isDetail === false) {
-        navigate("/register");
-      } else {
-        alert(res.error);
-      }
+      navigate("/mentordashboard");
     }
     console.log(res);
   };
@@ -118,9 +120,12 @@ export const MentorRegister = () => {
                     value={profile.category}
                     onChange={handleChange}
                   >
-                    <option value="volvo">Entrance</option>
-                    <option value="saab">Placements</option>
-                    <option value="mercedes">Higher Education</option>
+                    <option disabled value="">
+                      Choose Category
+                    </option>
+                    <option value="entrance">Entrance</option>
+                    <option value="placements">Placements</option>
+                    <option value="highereducation">Higher Education</option>
                   </select>
                 </div>
                 <div className="input-box">
@@ -141,21 +146,21 @@ export const MentorRegister = () => {
                   name="gender"
                   value="male"
                   onChange={handleChange}
-                  id="dot-2"
+                  id="dot-1"
                 />
                 <input
                   type="radio"
                   name="gender"
                   value="female"
                   onChange={handleChange}
-                  id="dot-3"
+                  id="dot-2"
                 />
                 <input
                   type="radio"
                   name="gender"
                   value="other"
                   onChange={handleChange}
-                  id="dot-1"
+                  id="dot-3"
                 />
                 <span className="gender-title">Gender</span>
                 <div className="category">

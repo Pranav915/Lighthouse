@@ -29,6 +29,25 @@ export const LoginPage = () => {
     const res = await response.json();
     if (res.success) {
       localStorage.setItem("token", res.authToken);
+      if (res.user.isDetail === true) {
+        if (res.user.role === "Mentor") {
+          navigate("/mentordashboard");
+        } else if (res.user.role === "Mentee") {
+          navigate("/menteedashboard");
+        } else {
+          alert(res.error);
+        }
+      } else if (res.user.isDetail === false) {
+        if (res.user.role === "Mentor") {
+          navigate("/mentorregister");
+        } else if (res.user.role === "Mentee") {
+          navigate("/menteeregister");
+        } else {
+          alert(res.error);
+        }
+      } else {
+        alert(res.error);
+      }
     }
     console.log(res);
   };
