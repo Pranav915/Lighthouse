@@ -56,8 +56,7 @@ router.post(
       const auth_token = jwt.sign(data, "abcd");
       console.log(auth_token);
 
-      const role = user.role;
-      res.json({ success, auth_token, role });
+      res.json({ success, auth_token, user });
     } catch (error) {
       success = false;
       console.error(error.message);
@@ -108,11 +107,10 @@ router.post(
         },
       };
 
-      const role = user.role;
       const authToken = jwt.sign(payload, "abcd");
       console.log(success, authToken);
 
-      res.json({ success, authToken, role });
+      res.json({ success, authToken, user });
     } catch (error) {
       success = false;
       console.error(error.message);
