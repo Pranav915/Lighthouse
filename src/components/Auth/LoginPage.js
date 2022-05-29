@@ -48,6 +48,8 @@ export const LoginPage = () => {
       } else {
         alert(res.error);
       }
+    } else {
+      alert(res.error);
     }
     console.log(res);
   };

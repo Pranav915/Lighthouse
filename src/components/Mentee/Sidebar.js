@@ -3,7 +3,16 @@ import MenteeDashboard from "./MenteeDashboard";
 import Select from "react-select";
 import { Browse } from "./Browse";
 import "./Browse.scss";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 const Sidebar = () => {
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+  });
   const options = [
     { value: "IAS", label: "IAS" },
     { value: "JEE", label: "JEE" },
