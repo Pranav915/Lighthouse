@@ -6,7 +6,10 @@ import { Home } from "./components/Home/Home";
 import MentorDashboard from "./components/Mentor/MentorDashboard";
 import { Register } from "./components/Register/Register.js";
 import MenteeDashboard from "./components/Mentee/MenteeDashboard";
-import {Browse} from "./components/Mentee/Browse";
+import { Browse } from "./components/Mentee/Browse";
+import Sidebar from "./components/Mentee/Sidebar";
+import { MentorDashboardViewProfile } from "./components/Mentor/MentorDashboardViewProfile";
+import { MenteeDashboardViewProfile } from "./components/Mentee/ViewProfile";
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
             <Route exact path="/forgotpassword" element={<ForgotPassword />} />
             <Route exact path="/register" element={<Register />} />
             <Route exact path="/browse" element={<Browse />} />
+            <Route exact path="/sidebar" element={<Sidebar />} />
             <Route
               exact
               path="/mentordashboard"
@@ -27,8 +31,18 @@ function App() {
             />
             <Route
               exact
+              path="/mentordashboardviewProfile"
+              element={<MentorDashboardViewProfile />}
+            />
+            <Route
+              exact
               path="/menteedashboard"
               element={<MenteeDashboard />}
+            />
+            <Route
+              exact
+              path="/menteedashboardviewProfile"
+              element={<MenteeDashboardViewProfile />}
             />
           </Routes>
         </div>
