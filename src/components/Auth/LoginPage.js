@@ -29,13 +29,6 @@ export const LoginPage = () => {
     const res = await response.json();
     if (res.success) {
       localStorage.setItem("token", res.authToken);
-      if (res.role === "Mentor") {
-        navigate("/mentorDashboard");
-      } else if (res.role === "Mentee") {
-        navigate("/menteeDashboard");
-      }
-    } else {
-      alert(res.error);
     }
     console.log(res);
   };

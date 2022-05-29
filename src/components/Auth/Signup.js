@@ -33,15 +33,27 @@ export const SignupPage = () => {
     const res = await response.json();
     if (res.success) {
       localStorage.setItem("token", res.authToken);
-      if (res.role === "Mentor") {
-        navigate("/mentorDashboard");
-      } else if (res.role === "Mentee") {
-        navigate("/menteeDashboard");
+      if (res.user.isDetail === true) {
+        if (res.user.role === "Mentor") {
+          navigate("/mentordashboard");
+        } else if (res.user.role === "Mentee") {
+          navigate("/menteedashboard");
+        } else {
+          alert(res.error);
+        }
+      } else if (res.user.isDetail === false) {
+        if (res.user.role === "Mentor") {
+          navigate("/mentorregister");
+        } else if (res.user.role === "Mentee") {
+          navigate("/menteeregister");
+        } else {
+          alert(res.error);
+        }
+      } else {
+        alert(res.error);
       }
-    } else {
-      alert(res.error);
+      console.log(res);
     }
-    console.log(res);
   };
 
   const onChange = (event) => {
@@ -56,100 +68,102 @@ export const SignupPage = () => {
 
   return (
     <>
-    <div className="LoginPage">
-      <div className="container sign-up-mode">
-        <div className="forms-container">
-          <div className="signin-signup">
-            <form action="#" className="sign-in-form">
-              <h2 className="title">Sign in</h2>
-              <div className="input-field">
-                <i className="fas fa-user"></i>
-                <input type="email" placeholder="Email" />
-              </div>
-              <div className="input-field">
-                <i className="fas fa-lock"></i>
-                <input type="password" placeholder="Password" />
-              </div>
-              <input type="submit" value="Login" className="btn solid" />
-              <a href="../Forget_Pass/Forget_Password.html">Forgot Password?</a>
-            </form>
-            {/* Sign Up Form */}
-            <form className="sign-up-form">
-              <h2 className="title">Sign up</h2>
-              <div className="input-field">
-                <i className="fas fa-envelope"></i>
+      <div className="LoginPage">
+        <div className="container sign-up-mode">
+          <div className="forms-container">
+            <div className="signin-signup">
+              <form action="#" className="sign-in-form">
+                <h2 className="title">Sign in</h2>
+                <div className="input-field">
+                  <i className="fas fa-user"></i>
+                  <input type="email" placeholder="Email" />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock"></i>
+                  <input type="password" placeholder="Password" />
+                </div>
+                <input type="submit" value="Login" className="btn solid" />
+                <a href="../Forget_Pass/Forget_Password.html">
+                  Forgot Password?
+                </a>
+              </form>
+              {/* Sign Up Form */}
+              <form className="sign-up-form">
+                <h2 className="title">Sign up</h2>
+                <div className="input-field">
+                  <i className="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    onChange={onChange}
+                    value={credential.email}
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={onChange}
+                    value={credential.password}
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock"></i>
+                  <select
+                    name="role"
+                    id="role"
+                    value={credential.role}
+                    onChange={onChange}
+                  >
+                    <option value="" disabled>
+                      Role
+                    </option>
+                    <option value="Mentee">Mentee</option>
+                    <option value="Mentor">Mentor</option>
+                  </select>
+                </div>
                 <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  onChange={onChange}
-                  value={credential.email}
+                  type="submit"
+                  className="btn"
+                  value="Sign up"
+                  onClick={handleSignUp}
                 />
+              </form>
+            </div>
+          </div>
+          <div className="panels-container">
+            <div className="panel left-panel">
+              <div className="content">
+                <h3>New here ?</h3>
+                <p>
+                  Make your account and get all your medical reports on Med
+                  Portfolio
+                </p>
+                <button className="btn transparent" id="sign-up-btn">
+                  Sign up
+                </button>
               </div>
-              <div className="input-field">
-                <i className="fas fa-lock"></i>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={onChange}
-                  value={credential.password}
-                />
-              </div>
-              <div className="input-field">
-                <i className="fas fa-lock"></i>
-                <select
-                  name="role"
-                  id="role"
-                  value={credential.role}
-                  onChange={onChange}
+              <img src="img/signin.png" className="image" alt="" />
+            </div>
+            <div className="panel right-panel">
+              <div className="content">
+                <h3>Already have an Account ?</h3>
+                <p></p>
+                <button
+                  className="btn transparent"
+                  id="sign-in-btn"
+                  onClick={navigateToLogin}
                 >
-                  <option value="" disabled>
-                    Role
-                  </option>
-                  <option value="Mentee">Mentee</option>
-                  <option value="Mentor">Mentor</option>
-                </select>
+                  Sign in
+                </button>
               </div>
-              <input
-                type="submit"
-                className="btn"
-                value="Sign up"
-                onClick={handleSignUp}
-              />
-            </form>
+              <img src="img/signup.png" className="image" alt="" />
+            </div>
           </div>
         </div>
-        <div className="panels-container">
-          <div className="panel left-panel">
-            <div className="content">
-              <h3>New here ?</h3>
-              <p>
-                Make your account and get all your medical reports on Med
-                Portfolio
-              </p>
-              <button className="btn transparent" id="sign-up-btn">
-                Sign up
-              </button>
-            </div>
-            <img src="img/signin.png" className="image" alt="" />
-          </div>
-          <div className="panel right-panel">
-            <div className="content">
-              <h3>Already have an Account ?</h3>
-              <p></p>
-              <button
-                className="btn transparent"
-                id="sign-in-btn"
-                onClick={navigateToLogin}
-              >
-                Sign in
-              </button>
-            </div>
-            <img src="img/signup.png" className="image" alt="" />
-          </div>
-        </div>
-      </div>
       </div>
     </>
   );
