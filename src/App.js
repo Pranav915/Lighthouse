@@ -4,11 +4,10 @@ import { LoginPage } from "./components/Auth/LoginPage";
 import { SignupPage } from "./components/Auth/Signup";
 import { Home } from "./components/Home/Home";
 import MentorDashboard from "./components/Mentor/MentorDashboard";
-import MenteeDashboard from "./components/Mentee/Menteedashboard";
-import {Browse} from "./components/Mentee/Browse";
-import {MentorDashboardViewProfile} from "./components/Mentor/MentorDashboardViewProfile";
-import {MenteeDashboardViewProfile} from "./components/Mentee/ViewProfile";
-
+import MenteeDashboard from "./components/Mentee/MenteeDashboard";
+import { Browse } from "./components/Mentee/Browse";
+import { MentorRegister } from "./components/Mentor/MentorRegister";
+import { MenteeRegister } from "./components/Mentee/MenteeRegister";
 
 function App() {
   return (
