@@ -26,6 +26,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/", require("./routes/search"));
 app.use("/api/", require("./routes/register"));
 app.use("/api", require("./routes/get"));
+app.use("/api/", require("./routes/profile"));
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
