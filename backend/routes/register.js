@@ -42,4 +42,37 @@ router.post("/registermentor", fetchuser, async (req, res) => {
   }
 });
 
+router.post("/registermentee", fetchuser, async (req, res) => {
+  // If there are errors return bad requests and the errors.
+  let success = false;
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors });
+    }
+
+    const mentee = new Mentee({
+      id: req.user.id,
+      name: req.body.name,
+      age: req.body.age,
+      gender: req.body.gender,
+      mobile: req.body.mobile,
+      email: req.user.email,
+    });
+    console.log(mentee);
+    const savedMentee = await mentee.save();
+    success = true;
+    const user = await User.findByIdAndUpdate(
+      { _id: req.user.id },
+      { isDetail: true }
+    );
+    user.save();
+    res.json({ success, savedMentee });
+  } catch (error) {
+    success = false;
+    console.error(error.message);
+    res.status(500).send(success, "Some error occurred");
+  }
+});
+
 module.exports = router;

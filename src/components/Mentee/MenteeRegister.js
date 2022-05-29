@@ -14,34 +14,27 @@ export const MenteeRegister = () => {
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    const response = await fetch(
-      "http://localhost:5000/api/auth/mentorregister",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
-        },
-        body: JSON.stringify({}),
-      }
-    );
-    setProfile({});
+    const response = await fetch("http://localhost:5000/api/registermentee", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        name: profile.name,
+        age: profile.age,
+        gender: profile.gender,
+        mobile: profile.mobile,
+      }),
+    });
+    setProfile({ name: "", age: "", gender: "", mobile: "" });
     const res = await response.json();
     if (res.success) {
-      if (res.user.isDetail === true) {
-        if (res.user.role === "Mentor") {
-          navigate("/mentordashboard");
-        } else if (res.user.role === "Mentee") {
-          navigate("/menteedashboard");
-        } else {
-          alert(res.error);
-        }
-      } else if (res.user.isDetail === false) {
-        navigate("/register");
-      } else {
-        alert(res.error);
-      }
+      navigate("/menteedashboard");
+    } else {
+      alert(res.error);
     }
+
     console.log(res);
   };
 

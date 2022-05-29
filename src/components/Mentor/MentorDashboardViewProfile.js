@@ -25,16 +25,17 @@ export const MentorDashboardViewProfile = () => {
   const [about, setAbout] = useState("");
 
   const onsele = async (event) => {
-    const response = await fetch("http://localhost:5000/api/viewprofile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        email: "patilpranav915@gmail.com",
-      }),
-    });
+    const response = await fetch(
+      "http://localhost:5000/api/viewmentorprofile",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({}),
+      }
+    );
     const res = await response.json();
     console.log(res.mentor);
     setName(res.mentor.name);
@@ -45,13 +46,6 @@ export const MentorDashboardViewProfile = () => {
     setQualification(res.mentor.qualification);
     setCategory(res.mentor.category);
     setAbout(res.mentor.about);
-    console.log(name);
-    console.log(age);
-    console.log(gender);
-    console.log(mobile);
-    console.log(name);
-    console.log(name);
-    console.log(name);
     // console.log(response.mentor);
     // const response = await fetch("http://localhost:5000/api/mentorDashboardviewProfile", {
     //   method: "POST",
