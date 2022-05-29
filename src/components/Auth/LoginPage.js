@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import { HomeNavbar } from '../Home/HomeNavbar'
 import "./LoginPage.scss";
+import "../Home/Home.scss";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
@@ -52,6 +54,7 @@ export const LoginPage = () => {
 
   return (
     <>
+    {/* <div className="Home" style={{'color':"black"}}><HomeNavbar/></div> */}
       <div className="LoginPage">
         <div className="container">
           <div className="forms-container">
@@ -80,6 +83,7 @@ export const LoginPage = () => {
                 </div>
                 <input type="submit" value="Login" className="btn solid" />
                 <a href="/forgotPassword">Forgot Password?</a>
+                <a href="/">Back To Home</a>
               </form>
               <form className="sign-up-form">
                 <h2 className="title">Sign up</h2>

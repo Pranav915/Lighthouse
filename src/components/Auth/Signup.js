@@ -117,6 +117,7 @@ export const SignupPage = () => {
                 value="Sign up"
                 onClick={handleSignUp}
               />
+              <a href="/" style={{'color':'black'}}>Back</a>
             </form>
           </div>
         </div>
