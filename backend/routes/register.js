@@ -4,7 +4,7 @@ const Mentee = require("../models/Mentee");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const fetchuser = require("../middleware/fetchuser");
-
+const User = require("../models/User");
 // ROUTE 2: Add a new note using: POST "/api/notes/addnote". Login required.
 router.post("/registermentor", fetchuser, async (req, res) => {
   // If there are errors return bad requests and the errors.
@@ -29,7 +29,11 @@ router.post("/registermentor", fetchuser, async (req, res) => {
     console.log(mentor);
     const savedMentor = await mentor.save();
     success = true;
-    req.user.isDetail = true;
+    const user = await User.findByIdAndUpdate(
+      { _id: req.user.id },
+      { isDetail: true }
+    );
+    user.save();
     res.json({ success, savedMentor });
   } catch (error) {
     success = false;
