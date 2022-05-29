@@ -31,7 +31,10 @@ const MenteeDashboard = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (
+      !localStorage.getItem("token") ||
+      !(localStorage.getItem("role") === "Mentee")
+    ) {
       navigate("/login");
     }
   });
@@ -39,6 +42,7 @@ const MenteeDashboard = () => {
   const handleLogout = () => {
     const token = localStorage.getItem("token");
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     console.log(token);
     navigate("/login");
   };

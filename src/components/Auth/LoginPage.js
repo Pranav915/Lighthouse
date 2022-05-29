@@ -29,6 +29,7 @@ export const LoginPage = () => {
     const res = await response.json();
     if (res.success) {
       localStorage.setItem("token", res.authToken);
+      localStorage.setItem("role", res.user.role);
       if (res.user.isDetail === true) {
         if (res.user.role === "Mentor") {
           navigate("/mentordashboard");

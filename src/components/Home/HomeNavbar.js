@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export const HomeNavbar = () => {
@@ -14,14 +14,20 @@ export const HomeNavbar = () => {
         },
         body: JSON.stringify({}),
       });
-      if (response.success) {
-        if (response.user.role === "Mentor") {
+      console.log("token available");
+      const res = await response.json();
+      console.log(res.user);
+      if (res.success === true) {
+        if (res.user.role === "Mentor") {
           navigate("/mentordashboard");
-        } else if (response.user.role === "Mentee") {
+        } else if (res.user.role === "Mentee") {
           navigate("/menteedashboard");
+        } else {
+          console.log("role error");
         }
-      } else {
+      } else if (res.success === false) {
         console.log("error");
+        navigate("/login");
       }
     } else {
       navigate("/login");

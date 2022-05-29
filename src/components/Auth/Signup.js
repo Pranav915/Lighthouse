@@ -33,6 +33,7 @@ export const SignupPage = () => {
     const res = await response.json();
     if (res.success) {
       localStorage.setItem("token", res.auth_token);
+      localStorage.setItem("role", res.user.role);
       if (res.user.isDetail === true) {
         if (res.user.role === "Mentor") {
           navigate("/mentordashboard");

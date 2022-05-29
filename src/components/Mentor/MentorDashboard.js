@@ -34,13 +34,18 @@ const MentorDashboard = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
+    if (
+      !localStorage.getItem("token") ||
+      !localStorage.getItem("role") === "Mentor"
+    ) {
       navigate("/login");
     }
+    console.log(localStorage.getItem("token"), localStorage.getItem("role"));
   });
   const handleLogout = () => {
     const token = localStorage.getItem("token");
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     console.log(token);
     navigate("/login");
   };

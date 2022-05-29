@@ -125,13 +125,15 @@ router.post(
 
 // ROUTE 3: Get logged in user details using POST "/api/auth/getuser". No login required.
 router.post("/getuser", fetchuser, async (req, res) => {
-  let success = true;
+  let success;
   try {
+    success = true;
     const userId = req.user.id;
-    const user = await User.findById(userId).select("-password");
-    res.send(success, user);
+    const user = await User.findById(userId);
+    res.json({ success, user });
   } catch (error) {
     console.error(error.message);
+    success = false;
     res.status(500).send(success, "Internal Server Error");
   }
 });
