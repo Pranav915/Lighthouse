@@ -5,7 +5,7 @@ import { SignupPage } from "./components/Auth/Signup";
 import { Home } from "./components/Home/Home";
 import MentorDashboard from "./components/Mentor/MentorDashboard";
 import { Register } from "./components/Register/Register.js";
-import MenteeDashboard from "./components/Mentee/MenteeDashboard";
+import MenteeDashboard from "./components/Mentee/Menteedashboard";
 import {Browse} from "./components/Mentee/Browse";
 import Sidebar from "./components/Mentee/Sidebar";
 import {MentorDashboardViewProfile} from "./components/Mentor/MentorDashboardViewProfile";
