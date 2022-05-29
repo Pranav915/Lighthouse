@@ -1,11 +1,11 @@
 import React from "react";
-import './MentorDashboardViewProfile.scss';
+import './MenteeDashboardViewProfile.scss';
 import { Helmet } from "react-helmet";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { set } from "mongoose";
 
-export const MentorDashboardViewProfile = () => {
+export const MenteeDashboardViewProfile = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({
     name: "",
@@ -29,9 +29,8 @@ export const MentorDashboardViewProfile = () => {
   const [call3, setCall3] = useState(false);
 
 
-
   const onsele1 = async (event) => {
-    const response = await fetch("http://localhost:5000/api/viewprofile", {
+    const response = await fetch("http://localhost:5000/api/viewprofilementee", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +66,7 @@ export const MentorDashboardViewProfile = () => {
 
   const onsele = async (event) => {
     
-    const response = await fetch("http://localhost:5000/api/updateprofile", {
+    const response = await fetch("http://localhost:5000/api/updateprofilementee", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +111,6 @@ export const MentorDashboardViewProfile = () => {
       console.log(name);
       console.log(name);
       // console.log(response.mentor);
-
     // const response = await fetch("http://localhost:5000/api/mentorDashboardviewProfile", {
     //   method: "POST",
     //   headers: {
@@ -184,7 +182,7 @@ export const MentorDashboardViewProfile = () => {
 
   return (
     <> 
-<div className="MentorDashboardViewProfile">
+<div className="MenteeDashboardViewProfile">
 <body>
 <div className="container" style={{'minHeight':'100%','margin':'50px 0px'}}>
 <div className="border-right" style={{'display':'flex'}}>

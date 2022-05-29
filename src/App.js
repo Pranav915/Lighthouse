@@ -5,6 +5,7 @@ import { SignupPage } from "./components/Auth/Signup";
 import { Home } from "./components/Home/Home";
 import MentorDashboard from "./components/Mentor/MentorDashboard";
 import { MentorDashboardViewProfile } from "./components/Mentor/MentorDashboardViewProfile";
+import { MenteeDashboardViewProfile } from "./components/Mentee/MenteeDashboardViewProfile";
 import Sidebar from "./components/Mentee/Sidebar";
 import { Browse } from "./components/Mentee/Browse";
 import { MentorRegister } from "./components/Mentor/MentorRegister";
@@ -32,6 +33,11 @@ function App() {
               exact
               path="/mentorprofile"
               element={<MentorDashboardViewProfile />}
+            />
+            <Route
+              exact
+              path="/menteeprofile"
+              element={<MenteeDashboardViewProfile />}
             />
             <Route exact path="/menteedashboard" element={<Sidebar />} />
             <Route exact path="/mentorregister" element={<MentorRegister />} />
