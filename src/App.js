@@ -4,7 +4,7 @@ import { LoginPage } from "./components/Auth/LoginPage";
 import { SignupPage } from "./components/Auth/Signup";
 import { Home } from "./components/Home/Home";
 import MentorDashboard from "./components/Mentor/MentorDashboard";
-import MenteeDashboard from "./components/Mentee/MenteeDashboard";
+import Sidebar from "./components/Mentee/Sidebar";
 import { Browse } from "./components/Mentee/Browse";
 import { MentorRegister } from "./components/Mentor/MentorRegister";
 import { MenteeRegister } from "./components/Mentee/MenteeRegister";
@@ -28,7 +28,7 @@ function App() {
             <Route
               exact
               path="/menteedashboard"
-              element={<MenteeDashboard />}
+              element={<Sidebar />}
             />
             <Route exact path="/mentorregister" element={<MentorRegister />} />
             <Route exact path="/menteeregister" element={<MenteeRegister />} />
