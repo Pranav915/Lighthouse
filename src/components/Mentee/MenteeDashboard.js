@@ -1,6 +1,7 @@
 //import useState hook to create menu collapse state
 import React, { useState } from "react";
 
+
 //import react pro sidebar components
 import {
   ProSidebar,
@@ -24,9 +25,11 @@ import { BiCog } from "react-icons/bi";
 
 //import sidebar css from react-pro-sidebar module and our custom css
 import "react-pro-sidebar/dist/css/styles.css";
-import "./MenteeDashboard.css";
+import "./MenteeDashboard.scss";
 
 const MenteeDashboard = () => {
+  
+  
   //create initial menuCollapse state using useState hook
   const [menuCollapse, setMenuCollapse] = useState(false);
 
@@ -38,8 +41,10 @@ const MenteeDashboard = () => {
 
   return (
     <>
+      <div className="MenteeDashboard">
       <div id="header">
         {/* collapsed props to change menu size using menucollapse state */}
+        
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
             <div className="logotext">
@@ -68,6 +73,7 @@ const MenteeDashboard = () => {
             </Menu>
           </SidebarFooter>
         </ProSidebar>
+      </div>
       </div>
     </>
   );
