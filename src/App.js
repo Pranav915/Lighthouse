@@ -4,11 +4,13 @@ import { LoginPage } from "./components/Auth/LoginPage";
 import { SignupPage } from "./components/Auth/Signup";
 import { Home } from "./components/Home/Home";
 import MentorDashboard from "./components/Mentor/MentorDashboard";
-import {MentorDashboardViewProfile} from "./components/Mentor/MentorDashboardViewProfile";
+import { MentorDashboardViewProfile } from "./components/Mentor/MentorDashboardViewProfile";
 import Sidebar from "./components/Mentee/Sidebar";
 import { Browse } from "./components/Mentee/Browse";
 import { MentorRegister } from "./components/Mentor/MentorRegister";
 import { MenteeRegister } from "./components/Mentee/MenteeRegister";
+import { Menteelist } from "./components/Mentor/Menteelist";
+import { Mentorlist } from "./components/Mentee/Mentorlist";
 
 function App() {
   return (
@@ -28,12 +30,14 @@ function App() {
             />
             <Route
               exact
-              path="/viewprofile"
+              path="/mentorprofile"
               element={<MentorDashboardViewProfile />}
             />
             <Route exact path="/menteedashboard" element={<Sidebar />} />
             <Route exact path="/mentorregister" element={<MentorRegister />} />
             <Route exact path="/menteeregister" element={<MenteeRegister />} />
+            <Route exact path="/menteelist" element={<Menteelist />} />
+            <Route exact path="/mentorlist" element={<Mentorlist />} />
           </Routes>
         </div>
       </Router>

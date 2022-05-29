@@ -50,6 +50,13 @@ const MentorDashboard = () => {
     navigate("/login");
   };
 
+  const handleHomeClick = () => {
+    navigate("/menteelist");
+  };
+  const handleProfileClick = () => {
+    navigate("/mentorprofile");
+  };
+
   //create a custom function that will change menucollapse state from false to true and true to false
   const menuIconClick = () => {
     //condition checking to change state from true to false and vice versa
@@ -74,11 +81,17 @@ const MentorDashboard = () => {
             </SidebarHeader>
             <SidebarContent>
               <Menu iconShape="square">
-                <MenuItem active={true} icon={<FiHome />}>
+                <MenuItem
+                  active={true}
+                  icon={<FiHome />}
+                  onClick={handleHomeClick}
+                >
                   Home
                 </MenuItem>
                 <MenuItem icon={<FaList />}>Messages</MenuItem>
-                <MenuItem icon={<FaRegHeart />}>Profile</MenuItem>
+                <MenuItem icon={<FaRegHeart />} onClick={handleProfileClick}>
+                  Profile
+                </MenuItem>
                 <MenuItem icon={<BiCog />}>Settings</MenuItem>
               </Menu>
             </SidebarContent>

@@ -47,6 +47,10 @@ const MenteeDashboard = () => {
     navigate("/login");
   };
 
+  const handleHomeClick = () => {
+    navigate("/mentorlist");
+  };
+
   //create initial menuCollapse state using useState hook
   const [menuCollapse, setMenuCollapse] = useState(false);
 
@@ -75,7 +79,11 @@ const MenteeDashboard = () => {
             </SidebarHeader>
             <SidebarContent>
               <Menu iconShape="square">
-                <MenuItem active={true} icon={<FiHome />}>
+                <MenuItem
+                  active={true}
+                  icon={<FiHome />}
+                  onClick={handleHomeClick}
+                >
                   Home
                 </MenuItem>
                 <MenuItem icon={<FaList />}>Messages</MenuItem>
